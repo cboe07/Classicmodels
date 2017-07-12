@@ -1,0 +1,192 @@
+/* line 3, ../../../compass/sass/_homemade_grid.scss */
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+/* line 7, ../../../compass/sass/_homemade_grid.scss */
+.col-1 {
+  width: 8.33333%;
+  float: left;
+}
+
+/* line 11, ../../../compass/sass/_homemade_grid.scss */
+.col-2 {
+  width: 16.66667%;
+  float: left;
+}
+
+/* line 15, ../../../compass/sass/_homemade_grid.scss */
+.col-6 {
+  width: 50%;
+  float: left;
+}
+
+/* line 2, ../../../compass/sass/_header.scss */
+ul li {
+  color: #d1d2d4;
+}
+/* line 4, ../../../compass/sass/_header.scss */
+ul li a {
+  color: #a1ffa4;
+  text-decoration: underline;
+}
+
+/* line 11, ../../../compass/sass/_header.scss */
+a {
+  text-decoration: none;
+}
+/* line 13, ../../../compass/sass/_header.scss */
+a h1 {
+  color: #d2d4d5;
+  font-size: 30px;
+}
+
+/* line 7, ../../../compass/sass/_footer.scss */
+.main li {
+  font-size: 1px;
+}
+
+/* line 12, ../../../compass/sass/_footer.scss */
+.container {
+  font-size: 14px;
+}
+/* line 14, ../../../compass/sass/_footer.scss */
+.container li {
+  list-style: none;
+  font-size: 15px;
+}
+/* line 17, ../../../compass/sass/_footer.scss */
+.container li a {
+  text-decoration: none;
+}
+/* line 21, ../../../compass/sass/_footer.scss */
+.container li {
+  color: white;
+}
+
+/* line 6, ../../../compass/sass/styles.scss */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* line 12, ../../../compass/sass/styles.scss */
+.App {
+  text-align: center;
+}
+
+/* line 16, ../../../compass/sass/styles.scss */
+.main {
+  margin-top: 60px;
+}
+
+/* line 20, ../../../compass/sass/styles.scss */
+.float-right {
+  float: right;
+}
+
+/* line 23, ../../../compass/sass/styles.scss */
+.link {
+  text-decoration: none;
+}
+
+/* line 27, ../../../compass/sass/styles.scss */
+.link:hover {
+  font-weight: bold;
+}
+
+/* line 31, ../../../compass/sass/styles.scss */
+.dropdown {
+  position: relative;
+}
+
+/* line 35, ../../../compass/sass/styles.scss */
+.dropdown .dropdown-links {
+  display: none;
+}
+
+/* line 39, ../../../compass/sass/styles.scss */
+.dropdown:hover .dropdown-links {
+  display: block;
+}
+
+/* line 43, ../../../compass/sass/styles.scss */
+.dropdown-links a {
+  display: block;
+  position: absolute;
+  left: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #999;
+  width: 150px;
+  text-align: left;
+  color: #777;
+  text-decoration: none;
+}
+
+/* line 55, ../../../compass/sass/styles.scss */
+.dropdown-links a:nth-child(1) {
+  top: 40px;
+}
+
+/* line 58, ../../../compass/sass/styles.scss */
+.dropdown-links a:nth-child(2) {
+  top: 60px;
+}
+
+/* line 61, ../../../compass/sass/styles.scss */
+.dropdown-links a:nth-child(3) {
+  top: 80px;
+}
+
+/* line 64, ../../../compass/sass/styles.scss */
+.dropdown-links a:nth-child(4) {
+  top: 100px;
+}
+
+/* line 67, ../../../compass/sass/styles.scss */
+.dropdown-links a:nth-child(5) {
+  top: 120px;
+}
+
+/* line 70, ../../../compass/sass/styles.scss */
+.dropdown-links a:nth-child(6) {
+  top: 140px;
+}
+
+/* line 73, ../../../compass/sass/styles.scss */
+.dropdown-links a:nth-child(7) {
+  top: 160px;
+}
+
+/* line 78, ../../../compass/sass/styles.scss */
+.dropdown-links a:hover {
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+/* line 84, ../../../compass/sass/styles.scss */
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+/* line 91, ../../../compass/sass/styles.scss */
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+/* line 96, ../../../compass/sass/styles.scss */
+.register-form {
+  text-align: left;
+}
+
+/* line 100, ../../../compass/sass/styles.scss */
+.shop-images {
+  margin: 10px;
+}
