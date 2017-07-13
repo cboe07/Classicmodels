@@ -3,6 +3,7 @@
 # dependencies
 /frontend/node_modules
 api/config
+/frontend/public/config.js
 api/node_modules
 .sass-cache
 
