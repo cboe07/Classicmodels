@@ -2,6 +2,9 @@
 
 # dependencies
 /frontend/node_modules
+api/config
+api/node_modules
+.sass-cache
 
 # testing
 /coverage
@@ -24,3 +27,4 @@ yarn-error.log*
 
 api/config
 api/node_modules
+.sass-cache
