@@ -1,23 +1,29 @@
 import React, {Component} from 'react';
+import { Form, FormGroup, ControlLabel, FormControl, Button, Col } from 'react-bootstrap';
 
 
 class Login extends Component{
 	render(){
 		return(
-			<div className='container main'>
-				<h1>Login Page</h1>
-				<div>
-				    <label><b>Username&nbsp;</b></label>
-				    <input type="text" placeholder="Enter Username" name="uname" required />
-				</div>
-				    <label><b>Password&nbsp;</b></label>
-				    <input type="password" placeholder="Enter Password" name="psw" required />
-				<div>
-				    <button className='btn btn-default' type="submit">Login</button>
-				</div>
-				<div>
-				    <input type="checkbox" checked="checked" /> Remember me
-				</div>
+			<div className='container main login-wrapper'>
+				<Form horizontal>
+					<FormGroup  controlId='formHorizontalName'>
+						<Col componentClass={ControlLabel} sm={2}>
+							Username
+						</Col>
+						<Col sm={8}>
+							<FormControl type='text' placeholder='Username' />
+						</Col>
+					</FormGroup>
+					<FormGroup controlId='formHorizontalName'>
+						<Col componentClass={ControlLabel} sm={2}>
+							Password
+						</Col>
+						<Col sm={8}>
+							<FormControl type='text' name='email' placeholder='Password' />
+						</Col>
+					</FormGroup>
+				</Form>
 			</div>
 		)
 	}

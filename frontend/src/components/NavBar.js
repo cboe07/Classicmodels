@@ -40,7 +40,7 @@ class NavBar extends Component{
 			    	<li><Link to="/" className="navbar-brand link">ClassicModels</Link></li>
 			    	<li><Link className="link" to="/">Home</Link></li>
 			      	<li className="dropdown">
-			      		<Link className="link" to="/shop"><i className="arrow down" /> Shop</Link>
+			      		<Link className="link" to="/shop">Shop <i className="arrow down" /></Link>
 			      		<ul>
 				      		<li className="dropdown-links">
 				      			{shopMenu}

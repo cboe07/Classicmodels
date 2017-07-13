@@ -181,12 +181,12 @@ i {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 96, ../../../compass/sass/styles.scss */
-.register-form {
-  text-align: left;
-}
-
-/* line 100, ../../../compass/sass/styles.scss */
+/* line 97, ../../../compass/sass/styles.scss */
 .shop-images {
   margin: 10px;
+}
+
+/* line 102, ../../../compass/sass/styles.scss */
+.register-wrapper {
+  margin-right: 100px;
 }
