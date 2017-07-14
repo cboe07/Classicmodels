@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import './App.css';
 // import '../public/css/styles.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import NavBar from './components/NavBar';
+import NavBar from './containers/NavBar';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Register from './containers/Register';
