@@ -21,15 +21,17 @@ class Register extends Component{
 		var name = event.target[0].value
 		var email= event.target[1].value
 		var accountType = 'customer'
-		var password = event.target[3].value
-		var city = event.target[4].value
-		var state = event.target[5].value
-		var salesRep = event.target[6].value
+		var username = event.target[3].value
+		var password = event.target[4].value
+		var city = event.target[5].value
+		var state = event.target[6].value
+		var salesRep = event.target[7].value
 		// console.log(name);
 		this.props.registerAction({
 			name: name,
 			email: email,
 			accountType: accountType,
+			username: username,
 			password: password,
 			city: city,
 			state: state,
@@ -43,7 +45,8 @@ class Register extends Component{
 	componentWillUpdate(nextProps, nextState) {
 		if(this.props.registerResponse.msg == 'userInserted'){
 			this.props.history.push('/');
-		}
+		}else if(this.props.registerResponse.msg == 'userAlreadyExists')
+			this.setState.registerMessage = 'User already Exists'
 	}
 
 	render(){
@@ -80,6 +83,14 @@ class Register extends Component{
 						</Col>
 						<Col sm={6}>
 							<FormControl type='text' name='type' value='Customer' disabled/>
+						</Col>
+					</FormGroup>
+					<FormGroup controlId='formHorizontalName'>
+						<Col componentClass={ControlLabel} sm={2}>
+							Username
+						</Col>
+						<Col sm={6}>
+							<FormControl type='text' name='username' placeholder='Username' />
 						</Col>
 					</FormGroup>
 					<FormGroup controlId='formHorizontalName'>
