@@ -186,7 +186,17 @@ i {
   margin: 10px;
 }
 
-/* line 102, ../../../compass/sass/styles.scss */
+/* line 101, ../../../compass/sass/styles.scss */
+.featured-models {
+  margin-bottom: 25px;
+}
+
+/* line 105, ../../../compass/sass/styles.scss */
+.featured-images {
+  margin: 58px;
+}
+
+/* line 110, ../../../compass/sass/styles.scss */
 .register-wrapper {
   margin-right: 100px;
 }

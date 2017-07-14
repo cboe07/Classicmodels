@@ -8,6 +8,7 @@ export default function(userData){
 		url: window.hostAddress + '/register',
 		data: userData
 	})
+	// Reducers get payload
 	return{
 		type: "REGISTER",
 		payload: thePromise
