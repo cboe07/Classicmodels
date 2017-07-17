@@ -10,7 +10,7 @@ export default function(loginData){
 	});
 	// Reducers get payload
 	return{
-		type: "LOGIN",
+		type: "REGISTER",
 		payload: thePromise
 	}
 }

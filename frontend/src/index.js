@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import '../public/css/styles.css';
 import App from './App';
-import Home from './containers/Home';
 
 // Go get the createStore method from the redux module
 // Add apllyMiddleware to the list
 import { createStore , applyMiddleware} from 'redux';
-
 
 // import the Provider so react and redux can talk
 import { Provider } from 'react-redux';
