@@ -1,9 +1,9 @@
 @import 'variables';
-@import 'homemade_grid';
+// @import 'homemade_grid';
 @import 'header';
 @import 'footer';
 @import 'home';
-@import 'products'
+@import 'products';
 
 body {
   margin: 0;
@@ -51,6 +51,11 @@ body {
   width: 150px;
   text-align: left;
   color: #777;
+  text-decoration: none;
+}
+
+.text-right:hover{
+  font-weight: bold;
   text-decoration: none;
 }
 
