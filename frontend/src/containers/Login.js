@@ -4,6 +4,7 @@ import { Form, FormGroup, ControlLabel, FormControl, Button, Col ,MenuItem} from
 import  {bindActionCreators} from 'redux';
 // Get the registerAction function which runs on submission
 import LoginAction from '../actions/LoginAction';
+import GetCart from '../actions/GetCart';
 // Because this is a container, we need connect from react-redux!
 import {connect} from 'react-redux';
 
@@ -29,7 +30,7 @@ class Login extends Component{
 
 		//Password
 		if(password.length == 0){
-			var passwordError = "error"; 
+			var passwordError = "error";
 			error=true;
 		}
 		else{ 
@@ -51,8 +52,7 @@ class Login extends Component{
 		}else{
 			this.props.loginAction({
 				email: email,
-				password: password,
-		
+				password: password
 			});
 		}
 	}
@@ -62,41 +62,46 @@ class Login extends Component{
 		console.log(nextProps.registerResponse)
 		console.log("=======================")
 
-		if(nextProps.registerResponse.msg == 'userInserted'){
+		if(nextProps.registerResponse.msg == 'loginSuccess'){
+			this.props.getCart(nextProps.registerResponse.token)
 			this.props.history.push('/');
 		}else if(nextProps.registerResponse.msg == 'userAlreadyExists'){
 			console.log("User name taken!")
 			this.setState({
-				registerMessage: "This email is already linked to an account."
+				registerMessage: "Sorry, this username is already taken."
 			})
 		}		
 	}
 
 	render(){
 
+		// this.setState({
+		// 	bad: ""
+		// })
+
 		return(
 			<div className="register-wrapper">
-				<h1>{this.state.registerMessage}</h1>
+				<h1 className="text-danger">{this.state.registerMessage}</h1>
 				<Form horizontal onSubmit={this.handleLogin}>
-					<FormGroup controlId="formHorizontalName" validationState={this.state.emailError}>
+					<FormGroup controlId="formHorizontalName" validationState={this.state.nameError}>
 						<Col componentClass={ControlLabel} sm={2}>
 							Email
 						</Col>
-						<Col sm={6}>
+						<Col sm={10}>
 							<FormControl type="email" name="email" placeholder="Email" />
 						</Col>
 					</FormGroup>
-					<FormGroup controlId="formHorizontalName">
+					<FormGroup controlId="formHorizontalName" validationState={this.state.emailError}>
 						<Col componentClass={ControlLabel} sm={2}>
 							Password
 						</Col>
-						<Col sm={6}>
+						<Col sm={10}>
 							<FormControl type="password" name="password" placeholder="Password" />
 						</Col>
 					</FormGroup>
 					<FormGroup>
-						<Col smOffset={2} sm={6}>
-							<Button bsStyle="primary" bsSize="small" type="submit">
+						<Col smOffset={2} sm={10}>
+							<Button bsStyle="success" bsSize="small" type="submit">
 								Login
 							</Button>
 						</Col>
@@ -115,7 +120,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		loginAction: LoginAction
+		loginAction: LoginAction,
+		getCart: GetCart
 	}, dispatch)
 }
 
@@ -124,40 +130,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(Login);
 
 
 
-// import React, {Component} from 'react';
-// import { Form, FormGroup, ControlLabel, FormControl, Button, Col } from 'react-bootstrap';
 
-
-// class Login extends Component{
-// 	render(){
-// 		return(
-// 			<div className='container main login-wrapper'>
-// 				<Form horizontal>
-// 					<FormGroup  controlId='formHorizontalName'>
-// 						<Col componentClass={ControlLabel} sm={2}>
-// 							Email
-// 						</Col>
-// 						<Col sm={8}>
-// 							<FormControl type='email' placeholder='Email' />
-// 						</Col>
-// 					</FormGroup>
-// 					<FormGroup controlId='formHorizontalName'>
-// 						<Col componentClass={ControlLabel} sm={2}>
-// 							Password
-// 						</Col>
-// 						<Col sm={8}>
-// 							<FormControl type='text' name='email' placeholder='Password' />
-// 						</Col>
-// 					</FormGroup>
-// 				</Form>
-// 			</div>
-// 		)
-// 	}
-// }
-
-
-
-// export default Login;
 
 
 

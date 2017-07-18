@@ -57,10 +57,17 @@ router.post('/updateCart', (req, res)=>{
 		}else{
 			const addToCartQuery = `INSERT INTO cart (uid,productCode) 
 				VALUES (?,?)`;
-			connection.query(addToCartQuery,[results[0].id,req.body.productCode],(results2, error2)=>{
+			connection.query(addToCartQuery,[results[0].id,req.body.productCode],(error2,results2)=>{
 				const getCartTotals = `SELECT SUM(buyPrice) as totalPrice,COUNT(buyPrice) as totalItems FROM cart
-					INNER JOIN products ON cart.productCode=products.productCode WHERE uid=5;`
-				res.json({productNumber: req.body.productCode})			
+					INNER JOIN products ON cart.productCode=products.productCode WHERE uid=?;`
+				connection.query(getCartTotals,[results[0].id],(error3,results3)=>{
+					if(error3){
+
+					}else{
+						res.json(results3[0])
+					}
+				})
+				// res.json({productNumber: req.body.productCode})			
 			})
 		}
 	});
@@ -140,7 +147,9 @@ router.post('/register', (req, res)=>{
 router.post('/login', (req, res)=>{
 	var email = req.body.email;
 	var password = req.body.password;
-	var checkLoginQuery = "SELECT * FROM users WHERE email = ?";
+	var checkLoginQuery = `SELECT * FROM users 
+		INNER JOIN customers ON users.uid = customers.customerNumber
+		WHERE email = ?`;
 	connection.query(checkLoginQuery, [email], (error,results)=>{
 		if(error) throw error;
 		if(results.length === 0){
@@ -161,7 +170,7 @@ router.post('/login', (req, res)=>{
 				connection.query(updateToken,[token,email],(error2,results2)=>{
 					res.json({
 						msg: 'loginSuccess',
-						name: results[0].name,
+						name: results[0].customerName,
 						token: token
 					})
 				})
