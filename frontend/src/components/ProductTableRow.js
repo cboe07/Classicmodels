@@ -12,6 +12,22 @@ function ProductTableRow(props){
 		var inStock = 'Out of Stock!'
 	}
 
+	if(props.loggedIn){
+		var button = <button
+						className='btn btn-primary'
+						onClick={
+							()=>{
+								//run add to cart function and send product code
+								// console.log("Added to cart")
+								props.addToCart("Test!")
+								props.addToCart(product.productCode,props.token)
+							}
+						}
+					>Add to Cart</button>
+	}else{
+		var button = "";
+	}
+
 	return(
 		<tr>
 			<td>{product.productName}</td>
@@ -21,7 +37,9 @@ function ProductTableRow(props){
 			<td className={inStockClass}>{inStock}</td>
 			<td>${product.MSRP}</td>
 			<td>${product.buyPrice}</td>
-			
+			<td>
+				{button}
+			</td>
 		</tr>
 	)
 }			

@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import $ from 'jquery';
 import ProductTableRow from '../components/ProductTableRow';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import UpdateCart from '../actions/UpdateCart'
 
 class ProductLine extends Component{
 	constructor(props) {
@@ -9,6 +12,7 @@ class ProductLine extends Component{
 			productList: [],
 			whichWay: true
 		}
+		// Make the right this available to our member
 		this.sortTable = this.sortTable.bind(this);
 		this.getProducts = this.getProducts.bind(this);
 	}
@@ -18,11 +22,12 @@ class ProductLine extends Component{
 	}
 
 	componentDidMount() {
+		// console.log(this.props.match)
 		this.getProducts(this.props);
 	}
 
 	getProducts(props){
-		const pl = props.nextProps.match.params.productLine
+		const pl = props.match.params.productLine
 		// console.log(pl)
 		const url = window.hostAddress + `/productlines/${pl}/get`
 		$.getJSON(url,(data)=>{
@@ -30,45 +35,63 @@ class ProductLine extends Component{
 			this.setState({
 				productList: data
 			})
-		});
+		});		
 	}
 
-
-	
 	sortTable(columnName){
 		console.log(columnName)
 		var productList = this.state.productList.slice();
-		
 
 		productList.sort((a, b) =>{
+			console.log(a)
+			console.log(b)
 		    var textA = a[columnName];
 		    var textB = b[columnName];
-		    // ternary statement, afer ? if true, after : if false
+		    // ternary statement, after ? if true, after : if false
 		    if(this.state.whichWay){
-		    	return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-		    }else{
-		    	return (textA < textB) ? 1 : (textA > textB) ? -1 : 0;
-		    }
-		    
+			    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+			}else{
+				return (textA < textB) ? 1 : (textA > textB) ? -1 : 0;
+			}
 		});
-
 		this.setState({
 			productList: productList,
 			whichWay: !this.state.whichWay
 		})
 	}
 
-
 	render(){
+
+		// console.log(this.props.loginInfo)
+		// Check to see if msg = loginSuccess.
+		// If so, they are logged in, let the ProductTableRow know
+		// If not, send appropriate props
+		if(this.props.loginInfo.token != undefined){
+			// these are the droids we're looking for
+			var loggedIn = true;
+			var token = this.props.loginInfo.token
+		}else{
+			var loggedIn = false;
+			var token = null
+		}
+
 		var productTableArray = [];
 		this.state.productList.map((product, index)=>{
-			productTableArray.push(<ProductTableRow key={index} product={product} />)
+			productTableArray.push(
+				<ProductTableRow 
+					key={index} 
+					product={product} 
+					addToCart={this.props.updateCart} 
+					loggedIn={loggedIn}
+					token={token}
+				/>
+			)
 		})
 
-		if(this.state.productList.length === 0){
-			var textHeader = "";
+		if(this.state.productList.length == 0){
+			var textHeader = ""
 		}else{
-			var textHeader = this.state.productList[0].productLine;
+			var textHeader = this.state.productList[0].productLine
 		}
 
 		return(
@@ -77,16 +100,18 @@ class ProductLine extends Component{
 				<table className="table table-striped">
 					<thead>
 						<tr>
-							<th className="table-head" onClick={()=>{this.sortTable('productName')}}>Product Name</th>
-							<th className="table-head" onClick={()=>{this.sortTable('productScale')}}>Model Scale</th>
-							<th className="table-head" onClick={()=>{this.sortTable('productVendor')}}>Vendor</th>
-							<th className="table-head desc" onClick={()=>{this.sortTable('productDescription')}}>Description</th>
-							<th className="table-head" onClick={()=>{this.sortTable('quantityInStock')}}>In Stock</th>
-							<th className="table-head" onClick={()=>{this.sortTable('MSRP')}}>MSRP</th>
-							<th className="table-head" onClick={()=>{this.sortTable('buyPrice')}}>Our Price</th>
-							
+							<th className="table-head" onClick={
+								()=>{this.sortTable("productName")
+							}}>Product Name</th>
+							<th className="table-head" onClick={()=>{this.sortTable("productScale")}}>Model Scale</th>
+							<th className="table-head" onClick={()=>{this.sortTable("productVendor")}}>Made By</th>
+							<th className="table-head" onClick={()=>{this.sortTable("productDescription")}}>Description</th>
+							<th className="table-head" onClick={()=>{this.sortTable("quantityInStock")}}>In Stock</th>
+							<th className="table-head" onClick={()=>{this.sortTable("buyPrice")}}>Your Price!</th>
+							<th className="table-head" onClick={()=>{this.sortTable("MSRP")}}>MSRP</th>
 						</tr>
-					</thead>
+					</thead>									
+
 					<tbody>
 						{productTableArray}
 					</tbody>
@@ -96,4 +121,34 @@ class ProductLine extends Component{
 	}
 }
 
-export default ProductLine;
+function mapStateToProps(state){
+	return{
+		loginInfo: state.registerReducer
+	}
+}
+
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({
+		updateCart: UpdateCart
+	}, dispatch)
+}
+
+// export default ProductLine;
+export default connect(mapStateToProps,mapDispatchToProps)(ProductLine);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

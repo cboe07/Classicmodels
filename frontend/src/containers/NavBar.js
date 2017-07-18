@@ -14,7 +14,7 @@ class NavBar extends Component{
 	componentDidMount() {
 		// go get all productlines from the double
 		$.getJSON(window.hostAddress+'/productlines/get', (productlinesData)=>{
-			console.log(productlinesData);
+			// console.log(productlinesData);
 			this.setState({
 				productlines: productlinesData
 			})
@@ -22,10 +22,12 @@ class NavBar extends Component{
 	}
 
   render(){
+  	console.log(this.props.cartInfo)
+
   	const shopMenu = [];
   	// Map through this.state.productlines. First render, will not loop because array is empty
   	this.state.productlines.map((pl,index)=>{
-  		console.log(pl)
+  		// console.log(pl)
   		shopMenu.push(
   			<Link key={index} to={`/shop/${pl.link}`}>{pl.productLine}</Link>
   		)
@@ -77,7 +79,8 @@ class NavBar extends Component{
 
 function mapStateToProps(state){
 	return{
-		registerInfo: state.registerReducer
+		registerInfo: state.registerReducer,
+		cartInfo: state.cartReducer
 	}
 }
 

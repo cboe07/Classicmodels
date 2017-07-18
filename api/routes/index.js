@@ -47,6 +47,26 @@ router.get('/productlines/:productLines/get', (req, res)=>{
 	})
 });
 
+router.post('/updateCart', (req, res)=>{
+	console.log(req.body)
+	const getUidQuery = `SELECT id from users WHERE token = ?`
+	connection.query(getUidQuery,[req.body.token],(error,results)=>{
+		if(error) throw error;
+		if(results.length == 0 ){
+			res.json({msg:"badToken"})
+		}else{
+			const addToCartQuery = `INSERT INTO cart (uid,productCode) 
+				VALUES (?,?)`;
+			connection.query(addToCartQuery,[results[0].id,req.body.productCode],(results2, error2)=>{
+				const getCartTotals = `SELECT SUM(buyPrice) as totalPrice,COUNT(buyPrice) as totalItems FROM cart
+					INNER JOIN products ON cart.productCode=products.productCode WHERE uid=5;`
+				res.json({productNumber: req.body.productCode})			
+			})
+		}
+	});
+
+});
+
 router.post('/register', (req, res)=>{
 	console.log(req.body)
 
@@ -135,9 +155,10 @@ router.post('/login', (req, res)=>{
 			if(checkHash){
 				// this is teh droid we're looking for
 				// Log them in... i.e, create a token, update it, send it back
-				const updateToken = `Update users SET token=?, token_exp=DATE_ADD(NOW(), INTERVAL 1 HOUR)`
+				const updateToken = `Update users SET token=?, token_exp=DATE_ADD(NOW(), INTERVAL 1 HOUR)
+					WHERE email=?`
 				var token = randToken.uid(40);
-				connection.query(updateToken,[token],(error2,results2)=>{
+				connection.query(updateToken,[token,email],(error2,results2)=>{
 					res.json({
 						msg: 'loginSuccess',
 						name: results[0].name,
