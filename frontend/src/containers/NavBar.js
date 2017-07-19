@@ -45,7 +45,7 @@ class NavBar extends Component{
 		var rightBar = [
 			<li key="1" className="text-right"><Link to="/login">Login</Link></li>,
 			<li key="2" className="text-right"><Link to="/register">Register</Link></li>,
-			// <li key="3" className="text-right"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>		
+			<li key="3" className="text-right"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>		
 		]
 	}else{
 		var rightBar = [

@@ -35,7 +35,7 @@ function ProductTableRow(props){
 			<td>{product.productVendor}</td>
 			<td>{product.productDescription}</td>
 			<td className={inStockClass}>{inStock}</td>
-			<td>${product.MSRP}</td>
+			<td className='msrp'>${product.MSRP}</td>
 			<td>${product.buyPrice}</td>
 			<td>
 				{button}

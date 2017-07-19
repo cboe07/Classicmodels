@@ -15,7 +15,7 @@ class Slick extends Component{
 			autoplay: true
 		}
 		return(
-			<div>
+			<div className='slick-div'>
 				<Slider {...settings}>
 					<div className='slick-image'><img src='/images/ferrari.jpg' /></div>
 					<div className='slick-image'><img src='/images/train1.jpg' /></div>

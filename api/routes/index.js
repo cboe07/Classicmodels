@@ -9,6 +9,9 @@ var bcrypt = require('bcrypt-nodejs');
 // include rand-token for generating user token
 var randToken = require('rand-token')
 
+var stripe = require('stripe')(config.stripeKey);
+
+
 // set up the connection with options
 var connection = mysql.createConnection({
 	host: config.host,
@@ -46,6 +49,28 @@ router.get('/productlines/:productLines/get', (req, res)=>{
 		res.json(results);
 	})
 });
+
+router.post('/getCart',(req,res)=>{
+	const getUidQuery = `SELECT id from users WHERE token = ?`
+	connection.query(getUidQuery,[req.body.token],(error,results)=>{
+		const getCartTotals = `SELECT SUM(buyPrice) as totalPrice,COUNT(buyPrice) as totalItems FROM cart
+			INNER JOIN products ON cart.productCode=products.productCode WHERE uid=?;`
+		connection.query(getCartTotals,[results[0].id],(error2,results2)=>{
+			if(error2){
+
+			}else{
+				const getCartContents = `SELECT * FROM cart
+				INNER JOIN products ON products.productCode = cart.productCode WHERE uid = ?`
+				connection.query(getCartContents,[results[0].id],(error3,results3)=>{
+					var finalCart = results2[0];
+					finalCart.products = results3
+					res.json(results2[0])
+				})
+				
+			}
+		})
+	})
+})
 
 router.post('/updateCart', (req, res)=>{
 	console.log(req.body)
@@ -182,6 +207,30 @@ router.post('/login', (req, res)=>{
 					msg: 'wrongPassword'
 				})
 			}
+		}
+	})
+})
+
+router.post('/stripe', (req,res)=>{
+	var userToken = req.body.token;
+	var stripeToken = req.body.stripeToken;
+	var amount = req.body.amount;
+	// stripe module associated with secret stripeKey
+	// has a create method, whoch takes an object of options to charge
+	stripe.charges.create({
+		amount: amount,
+		currency: 'usd',
+		source: stripeToken,
+		description: "Charges for classicmodels",
+	},(error,charge)=>{
+		if(error){
+			res.json({
+				msg: error
+			})
+		}else{
+			res.json({
+				msg: 'paymentSuccess'
+			})
 		}
 	})
 })

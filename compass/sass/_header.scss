@@ -34,21 +34,29 @@
   text-decoration: none;
 }
 
-
-ul{
-	li{
-		// color: #d1d2d4;
-		a{
-			color: #a1ffa4;
-			text-decoration: underline;
-		}
-	}
+.nav.navbar-nav.float-right .text-right a{
+    display: inline;
 }
 
-a{
-	text-decoration: none;
-	h1{
-		color: #d2d4d5;
-		font-size:30px;
-	}
+.text-right{
+	margin-top: 15px;
 }
+
+
+// ul{
+// 	li{
+// 		// color: #d1d2d4;
+// 		a{
+// 			color: #a1ffa4;
+// 			text-decoration: underline;
+// 		}
+// 	}
+// }
+
+// a{
+// 	text-decoration: none;
+// 	h1{
+// 		color: #d2d4d5;
+// 		font-size:30px;
+// 	}
+// }

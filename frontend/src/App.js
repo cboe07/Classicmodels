@@ -6,6 +6,7 @@ import Login from './containers/Login';
 import Register from './containers/Register';
 import Slick from './components/Slick';
 import ProductLine from './containers/ProductLine';
+import Cart from './containers/Cart';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
                     <Route exact path='/login' component={Login} />
     				<Route exact path='/register' component={Register} />
                     <Route path='/shop/:productLine' component={ProductLine} />
+                    <Route path='/cart' component={Cart} />
     			</div>
     		</div>
     	</Router>

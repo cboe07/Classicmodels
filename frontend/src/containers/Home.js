@@ -34,6 +34,7 @@ class Home extends Component{
 			})
 		return(
 			<div>
+				<h1>FEATURED PRODUCTS</h1>
 				{plImages}
 				
 			</div>

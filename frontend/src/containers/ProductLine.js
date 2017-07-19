@@ -97,7 +97,7 @@ class ProductLine extends Component{
 		return(
 			<div>
 				<h1>{textHeader}</h1>
-				<table className="table table-striped">
+				<table className="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th className="table-head" onClick={
@@ -107,8 +107,8 @@ class ProductLine extends Component{
 							<th className="table-head" onClick={()=>{this.sortTable("productVendor")}}>Made By</th>
 							<th className="table-head" onClick={()=>{this.sortTable("productDescription")}}>Description</th>
 							<th className="table-head" onClick={()=>{this.sortTable("quantityInStock")}}>In Stock</th>
-							<th className="table-head" onClick={()=>{this.sortTable("buyPrice")}}>Your Price!</th>
-							<th className="table-head" onClick={()=>{this.sortTable("MSRP")}}>MSRP</th>
+							<th className="table-head" onClick={()=>{this.sortTable("buyPrice")}}>MSRP</th>
+							<th className="table-head" onClick={()=>{this.sortTable("MSRP")}}>You Pay</th>
 						</tr>
 					</thead>									
 

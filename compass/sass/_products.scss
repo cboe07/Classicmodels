@@ -3,6 +3,9 @@
 	text-decoration: none;
 	cursor: pointer;
 	font-size: 18px;
+	&:hover{
+		text-decoration: underline;
+	}
 
 }
 
@@ -13,4 +16,12 @@
 .table{
 	text-align: left;
 }
+
+.msrp{
+	text-decoration: line-through;
+}
+
+// .table-hover tr:hover td{
+//   background-color: #A9A9A9;
+// }
 
