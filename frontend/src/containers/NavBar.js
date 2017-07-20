@@ -42,7 +42,7 @@ class NavBar extends Component{
   			<Link key={index} to={`/shop/${pl.link}`}>{pl.productLine}</Link>
   		)
   		collapsedMenu.push(
-			<Link key={index} to={`/shop/${pl.link}`}>{pl.productLine}</Link>
+			<li key={index}><Link to={`/shop/${pl.link}`}>{pl.productLine}</Link></li>
 		)
   	})
 
@@ -50,13 +50,14 @@ class NavBar extends Component{
 		var rightBar = [
 			<li key="1" className="text-right"><Link to="/login">Login</Link></li>,
 			<li key="2" className="text-right"><Link to="/register">Register</Link></li>,
-			<li key="3" className="text-right"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>		
+			// <li key="3" className="text-right"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>
+			<li key="3" className="text-right"><Link to="/cart">My Cart</Link></li>		
 		]
 	}else{
 		var rightBar = [
 			<li key="1" className="text-right">Welcome, {this.props.registerInfo.name}</li>,
 			<li key="2" className="text-right"><Link to="/cart">({totalItems}) items in your cart | (${totalPrice})</Link></li>,
-			<li key="3" className="text-right"><Link to="/logout">Logout</Link></li>		
+			<li key="3" className="text-right"><a href="http://localhost:3001/">Logout</a></li>		
 		]		
 	}
 
@@ -91,6 +92,25 @@ class NavBar extends Component{
 
 					{/* COLLAPSED NAVBAR */}
 					<div className="dropdown hidden-lg hidden-md">
+						<div className="nav navbar-nav dropdown-toggle">
+							<Link to="/" className="navbar-brand classic-models">ClassicModels</Link>
+						</div>
+						<ul className="nav navbar-nav dropdown-menu">
+							<li><Link to="/">Home</Link></li>
+							<li className="dropdown">
+								<Link to="/">Shop</Link>
+								<div className="collapsed-shop-menu">{collapsedMenu}</div>
+							</li>
+							<li><Link to="/about">About Us</Link></li>
+							<li><Link to="/contact">Contact Us</Link></li>
+							<ul>
+								{rightBar}
+							</ul>
+						</ul>
+					</div>
+
+
+				{/* <div className="dropdown hidden-lg hidden-md">
 						<div className="nav navbar-nav dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							<Link to="/" className="navbar-brand classic-models">ClassicModels</Link>
 						</div>
@@ -106,7 +126,7 @@ class NavBar extends Component{
 								{rightBar}
 							</ul>
 						</ul>
-					</div>
+					</div>*/}
 
 				</div>
 			</nav>

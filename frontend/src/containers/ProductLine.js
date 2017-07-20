@@ -108,7 +108,7 @@ class ProductLine extends Component{
 							<th className="table-head" onClick={()=>{this.sortTable("productDescription")}}>Description</th>
 							<th className="table-head" onClick={()=>{this.sortTable("quantityInStock")}}>In Stock</th>
 							<th className="table-head" onClick={()=>{this.sortTable("buyPrice")}}>MSRP</th>
-							<th className="table-head" onClick={()=>{this.sortTable("MSRP")}}>You Pay</th>
+							<th className="table-head" onClick={()=>{this.sortTable("MSRP")}}>Your Price</th>
 						</tr>
 					</thead>									
 

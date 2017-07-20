@@ -85,7 +85,7 @@ class Cart extends Component{
 		return(
 			<div>
 				<div>
-					Your order total is: ${this.props.cartInfo.totalPrice} |  
+					<h3>Your order total is: ${this.props.cartInfo.totalPrice}</h3>  
 					<button className= 'btn btn-primary' onClick={this.makePayment}>
 						Pay Now
 					</button>
