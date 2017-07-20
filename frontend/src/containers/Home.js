@@ -34,8 +34,11 @@ class Home extends Component{
 			})
 		return(
 			<div>
-				<h1>FEATURED PRODUCTS</h1>
-				{plImages}
+				<div>
+					<h1>WELCOME TO CLASSIC MODELS</h1>
+					<h3>FEATURED PRODUCTS</h3>
+					{plImages}
+					</div>
 				
 			</div>
 		)

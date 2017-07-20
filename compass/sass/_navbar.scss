@@ -1,3 +1,14 @@
+.left{
+  font-family: 'Lobster', Georgia, Times, serif;
+  // line-height: 100px;
+  
+}
+.classic-models{
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 30px;
+} 
+
+
 .float-right{
   float: right;
 }
@@ -36,4 +47,37 @@
 .text-right:hover{
   font-weight: bold;
   text-decoration: none;
+}
+
+i{
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.link{
+  text-decoration: none;
+}
+
+.slick-image img{
+    width: 100vw;
+}
+
+.nav.navbar-nav.float-right .text-right a{
+  display: inline;
+}
+.nav.navbar-nav.float-right .userNameLoggedIn{
+  display: inline;
+}
+
+.collapsed-shop-menu{
+  display: block;
+  padding-left: 20px;
+  color: gray;
 }

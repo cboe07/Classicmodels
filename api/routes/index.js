@@ -228,9 +228,14 @@ router.post('/stripe', (req,res)=>{
 				msg: error
 			})
 		}else{
+			// Insert stuff from cart that was just paid into:
+				// - orders
+				// - orderdetails
+			// Then remove from cart
 			res.json({
 				msg: 'paymentSuccess'
 			})
+
 		}
 	})
 })

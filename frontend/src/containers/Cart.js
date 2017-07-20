@@ -61,6 +61,7 @@ class Cart extends Component{
 			return(
 				<div>
 					<h3>Your cart is empty! Continue shopping or <Link to='/login'>login</Link></h3>
+					<img src='../images/empty-cart.png' />
 				</div>
 			)
 		}

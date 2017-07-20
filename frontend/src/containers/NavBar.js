@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery';
 import {connect} from 'react-redux';
+import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap'
 
 class NavBar extends Component{
 	constructor(props) {
@@ -33,12 +34,16 @@ class NavBar extends Component{
   	}
 
   	const shopMenu = [];
+  	const collapsedMenu = [];
   	// Map through this.state.productlines. First render, will not loop because array is empty
   	this.state.productlines.map((pl,index)=>{
   		// console.log(pl)
   		shopMenu.push(
   			<Link key={index} to={`/shop/${pl.link}`}>{pl.productLine}</Link>
   		)
+  		collapsedMenu.push(
+			<Link key={index} to={`/shop/${pl.link}`}>{pl.productLine}</Link>
+		)
   	})
 
 	if(this.props.registerInfo.name == undefined){
@@ -55,32 +60,58 @@ class NavBar extends Component{
 		]		
 	}
 
-
     return(
     	<div>
-			<nav className="navbar navbar-default navbar-fixed-top">
-			  <div className="container-fluid navbar-white">
-			    <ul className="nav navbar-nav">
-			    	<li><Link to="/" className="navbar-brand link">ClassicModels</Link></li>
-			    	<li><Link className="link" to="/">Home</Link></li>
-			      	<li className="dropdown">
-			      		<Link className="link" to="/shop">Shop <i className="arrow down" /></Link>
-			      		<ul>
-				      		<li className="dropdown-links">
-				      			{shopMenu}
-				      		</li>
-			      		</ul>
-			      	</li>
-			      	<li><Link className="link" to="/about">About Us</Link></li>
-			      	<li><Link className="link" to="/contact">Contact Us</Link></li>
-			    </ul>
-			    <ul className="nav navbar-nav float-right">
-			      {rightBar}
-			   </ul>
-			  </div>
+			<nav className="navbar navbar-inverse navbar-fixed-top">
+				<div className="container-fluid">
+					<div className="navbar-header hidden-sm hidden-xs">
+						<Link to="/" className="navbar-brand classic-models">ClassicModels</Link>
+					</div>
+
+					{/* NAVBAR */}
+					<div className="hidden-sm hidden-xs">
+						<ul className="nav navbar-nav left">
+							<li><Link to="/">Home</Link></li>
+							<li className="dropdown">
+								<Link to="/">Shop <i className="arrow down" /></Link>
+								<ul>
+									<li className="dropdown-links">
+										{/* Drop in the array of <Link> created above */}
+										{shopMenu}
+									</li>
+								</ul>
+							</li>
+							<li><Link to="/about">About Us</Link></li>
+							<li><Link to="/contact">Contact Us</Link></li>
+						</ul>
+						<ul className="nav navbar-nav float-right">
+							{rightBar}
+						</ul>
+					</div>
+
+					{/* COLLAPSED NAVBAR */}
+					<div className="dropdown hidden-lg hidden-md">
+						<div className="nav navbar-nav dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							<Link to="/" className="navbar-brand classic-models">ClassicModels</Link>
+						</div>
+						<ul className="nav navbar-nav dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><Link to="/">Home</Link></li>
+							<li className="dropdown">
+								<Link to="/">Shop</Link>
+								<div className="collapsed-shop-menu">{collapsedMenu}</div>
+							</li>
+							<li><Link to="/about">About Us</Link></li>
+							<li><Link to="/contact">Contact Us</Link></li>
+							<ul>
+								{rightBar}
+							</ul>
+						</ul>
+					</div>
+
+				</div>
 			</nav>
-	        
-        </div>
+		</div>
+  
 	)
   }
 }

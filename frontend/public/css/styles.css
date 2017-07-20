@@ -75,7 +75,7 @@
 
 /* line 1, ../../../compass/sass/_home.scss */
 .pl-images {
-  margin-bottom: 10px;
+  margin: 20px;
 }
 /* line 4, ../../../compass/sass/_home.scss */
 .pl-images img {
@@ -101,7 +101,6 @@
 
 /* line 1, ../../../compass/sass/_products.scss */
 .table-head {
-  color: blue;
   text-decoration: none;
   cursor: pointer;
   font-size: 18px;
@@ -141,36 +140,47 @@ input {
 }
 
 /* line 1, ../../../compass/sass/_navbar.scss */
+.left {
+  font-family: 'Lobster', Georgia, Times, serif;
+}
+
+/* line 6, ../../../compass/sass/_navbar.scss */
+.classic-models {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 30px;
+}
+
+/* line 12, ../../../compass/sass/_navbar.scss */
 .float-right {
   float: right;
 }
 
-/* line 4, ../../../compass/sass/_navbar.scss */
+/* line 15, ../../../compass/sass/_navbar.scss */
 .link {
   text-decoration: none;
 }
 
-/* line 8, ../../../compass/sass/_navbar.scss */
+/* line 19, ../../../compass/sass/_navbar.scss */
 .link:hover {
   font-weight: bold;
 }
 
-/* line 12, ../../../compass/sass/_navbar.scss */
+/* line 23, ../../../compass/sass/_navbar.scss */
 .dropdown {
   position: relative;
 }
 
-/* line 16, ../../../compass/sass/_navbar.scss */
+/* line 27, ../../../compass/sass/_navbar.scss */
 .dropdown .dropdown-links {
   display: none;
 }
 
-/* line 20, ../../../compass/sass/_navbar.scss */
+/* line 31, ../../../compass/sass/_navbar.scss */
 .dropdown:hover .dropdown-links {
   display: block;
 }
 
-/* line 24, ../../../compass/sass/_navbar.scss */
+/* line 35, ../../../compass/sass/_navbar.scss */
 .dropdown-links a {
   display: block;
   position: absolute;
@@ -183,10 +193,51 @@ input {
   text-decoration: none;
 }
 
-/* line 36, ../../../compass/sass/_navbar.scss */
+/* line 47, ../../../compass/sass/_navbar.scss */
 .text-right:hover {
   font-weight: bold;
   text-decoration: none;
+}
+
+/* line 52, ../../../compass/sass/_navbar.scss */
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+/* line 59, ../../../compass/sass/_navbar.scss */
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+/* line 64, ../../../compass/sass/_navbar.scss */
+.link {
+  text-decoration: none;
+}
+
+/* line 68, ../../../compass/sass/_navbar.scss */
+.slick-image img {
+  width: 100vw;
+}
+
+/* line 72, ../../../compass/sass/_navbar.scss */
+.nav.navbar-nav.float-right .text-right a {
+  display: inline;
+}
+
+/* line 75, ../../../compass/sass/_navbar.scss */
+.nav.navbar-nav.float-right .userNameLoggedIn {
+  display: inline;
+}
+
+/* line 79, ../../../compass/sass/_navbar.scss */
+.collapsed-shop-menu {
+  display: block;
+  padding-left: 20px;
+  color: gray;
 }
 
 /* line 10, ../../../compass/sass/styles.scss */
@@ -205,10 +256,4 @@ body {
 /* line 21, ../../../compass/sass/styles.scss */
 .main {
   margin-top: 60px;
-}
-
-/* line 39, ../../../compass/sass/styles.scss */
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
 }
